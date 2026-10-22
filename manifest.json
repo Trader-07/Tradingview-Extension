@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Zamzam Capital Shariah Checker",
+  "version": "1.0.7",
+  "description": "Automatically displays Shariah compliance information for the active TradingView ticker.",
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://*.tradingview.com/*",
+    "https://screener.zamzam-capital.com/*",
+    "https://*.zamzam-capital.com/*",
+    "https://*.workers.dev/*",
+    "https://excell-final-worker.saif-ace.workers.dev/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.tradingview.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Zamzam Capital Shariah Checker",
+    "default_popup": "popup.html"
+  }
+}
